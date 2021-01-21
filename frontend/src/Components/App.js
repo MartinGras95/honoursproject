@@ -1,8 +1,16 @@
 import './App.css';
+import Layout from './Layout';
+import Courses from './Courses';
+
+
 
 function App() {
   return (
-    <div>Hello Honours App!</div>
+    <Layout>
+      <Courses />
+
+    </Layout>
+
   );
 }
 
