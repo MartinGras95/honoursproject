@@ -17,7 +17,7 @@ function ActivityCodeBlanks() {
         <div className="container" style={containerStyles}>
             <div className="row">
 
-                <div className="col s5">
+                <div className="col s6">
                     <h3>Input</h3>
                     <div style={codeAreaStyles}>
                         <p>var x = 5;</p>
@@ -25,7 +25,7 @@ function ActivityCodeBlanks() {
                         <p>console.log(x + y);</p>
                     </div>
                 </div>
-                <div className="col s5">
+                <div className="col s6">
                     <h3>Output</h3>
                     <div style={codeAreaStyles}>
                         <p>10</p>
@@ -34,7 +34,7 @@ function ActivityCodeBlanks() {
             </div>
             <div className="row">
                 <div className="col s12">
-                    <button class="btn">Run</button>
+                    <button className="btn">Run</button>
                 </div>
             </div>
         </div>
