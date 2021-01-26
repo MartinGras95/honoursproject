@@ -11,6 +11,9 @@ function ActivityCodeEditor() {
 
     return(
         <div className="container">
+            <h4>Activity Type 2</h4>
+            <blockquote>Write a program that will display your name 5 times!</blockquote>
+
             <div className="row">
                 <div className="col s6">
                     <h3>Input</h3>

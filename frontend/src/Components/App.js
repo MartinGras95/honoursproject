@@ -12,6 +12,7 @@ import Courses from './Courses';
 
 function App() {
   return (
+    // Router used to link pages on the webpage
     <Router>
       <Layout>
         <Switch>

@@ -11,7 +11,7 @@ function Courses(){
                 </div>
             </div>
             <div className="row">
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                     <div className="row">
                         <div className="col s12">
                             <div className="card">
@@ -31,7 +31,7 @@ function Courses(){
                         </div>
                     </div>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                     <div className="row">
                         <div className="col s12">
                             <div className="card">
@@ -49,7 +49,7 @@ function Courses(){
                         </div>
                     </div>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                     <div className="row">
                         <div className="col s12">
                             <div className="card">
@@ -67,7 +67,7 @@ function Courses(){
                         </div>
                     </div>
                 </div>
-                <div className="col s3">
+                <div className="col s12 m6 l3">
                     <div className="row">
                         <div className="col s12">
                             <div className="card">

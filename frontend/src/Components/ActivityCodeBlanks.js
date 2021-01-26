@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ActivityCodeBlanks() {
-
+    // Temporary styles for the code areas
     const codeAreaStyles = {
         border: "1px black solid",
         padding: "1rem",
@@ -15,8 +15,9 @@ function ActivityCodeBlanks() {
 
     return (
         <div className="container" style={containerStyles}>
+            <h4>Activity Type 1</h4>
+            <blockquote>Fill in the blanks in the code and run it! Observe what happens and experiment with different imputs!</blockquote>
             <div className="row">
-
                 <div className="col s6">
                     <h3>Input</h3>
                     <div style={codeAreaStyles}>
