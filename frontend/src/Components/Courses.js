@@ -1,4 +1,4 @@
-
+import React from 'react';
 import js from '../images/js.jpg';
 import {Link} from 'react-router-dom';
 
@@ -25,7 +25,7 @@ function Courses(){
                                     <p>Learn basics of JavaScript in this basic activity!</p>
                                 </div>
                                 <div className="card-action">
-                                    <a href="#!">Start Now</a>
+                                    <Link to="/activity">Start Now</Link>
                                 </div>
                             </div>
                         </div>

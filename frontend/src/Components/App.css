@@ -7,3 +7,10 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+.btnCorr:focus{
+  background-color: #8ACB88;
+}
+.btnWrong:focus{
+  background-color: #f44336 ;
+}
