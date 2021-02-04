@@ -2,11 +2,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
+import routes from './routes/userRoutes';
 
 // create webserver with express
 const app = express();
 // port
-const PORT = 3000;
+const PORT = 4000;
 
 // Database
 // Mongo connection
@@ -21,6 +22,9 @@ mongoose.connect('mongodb+srv://martingras:titilayo@examplemerncluster.rnhwh.mon
 // bodyparser setup - so requests can be transpild to what db can understand
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
+
+// Making routes available to the application
+routes(app);
 
 // Routes
 app.get('/', (req,res) => {
