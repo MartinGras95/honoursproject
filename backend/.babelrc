@@ -1,0 +1,7 @@
+// This file makes sure babel works correctly
+{
+    "presets": [
+        "env",
+        "stage-0"
+    ]
+}
