@@ -38,11 +38,11 @@ function ActivityCodeEditor() {
             <blockquote>Write a program that will log your name to the console!</blockquote>
 
             <div className="row">
-                <div className="col s6">
+                <div className="col s12 m6">
                     <h3>Input</h3>
                     <textarea id="txtUserCode" style={codeAreaStyles} placeholder="Start Coding Here!"></textarea>
                 </div>
-                <div className="col s6">
+                <div className="col s12 m6">
                     <h3>Output</h3>
                     <div style={codeAreaStyles} id="txtCodeEditorOutput">
                         

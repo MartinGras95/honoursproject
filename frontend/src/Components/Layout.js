@@ -2,15 +2,17 @@ import React from 'react';
 
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Jumbo from './Jumbo';
-
+import './App.css';
 
 function Layout(props){
     return(
-            <div>
-                <Navbar />
-                    <Jumbo />
+            <div className="pageWrapper">
+                <header>
+                    <Navbar />
+                </header>
+                <main>
                     {props.children}
+                </main>
                 <Footer />
             </div>
     )

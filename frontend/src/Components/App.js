@@ -9,6 +9,9 @@ import './App.css';
 // Component imports
 import Layout from './Layout';
 import Courses from './Courses';
+import Login from './Login';
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 function App() {
   return (
@@ -16,7 +19,8 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <Route path="/" component={Courses} exact={true}/>
+          <Route path="/" component={Login} exact={true}/>
+          <Route path="/home" component={Courses} />
           <Route path="/account" component={Account} />
           <Route path="/activity" component={ActivityPage} />
         </Switch>
