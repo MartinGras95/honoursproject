@@ -1,11 +1,26 @@
 // imports
 import express from 'express';
+import mongoose from 'mongoose';
+import bodyparser from 'body-parser';
 
 // create webserver with express
 const app = express();
-
 // port
 const PORT = 3000;
+
+// Database
+// Mongo connection
+mongoose.Promise = global.Promise;
+
+// Connect to database
+mongoose.connect('mongodb+srv://martingras:titilayo@examplemerncluster.rnhwh.mongodb.net/codailyDB?retryWrites=true&w=majority',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+// bodyparser setup - so requests can be transpild to what db can understand
+app.use(bodyparser.urlencoded({extended: true}));
+app.use(bodyparser.json());
 
 // Routes
 app.get('/', (req,res) => {
