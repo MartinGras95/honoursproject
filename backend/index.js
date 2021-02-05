@@ -2,7 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
-import routes from './routes/userRoutes';
+import routes from './routes/Routes';
 
 // create webserver with express
 const app = express();

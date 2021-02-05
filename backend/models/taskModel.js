@@ -4,16 +4,24 @@ import mongoose from 'mongoose';
 // variable that will hold a mongoose schema
 const Schema = mongoose.Schema;
 
-export const activitySchema = new Schema({
-    module: {
+export const taskSchema = new Schema({
+    question: {
         type: String,
         required: true
     },
-    activityNo: {
+    answer: {
+        type: String,
+    },
+    type: {
         type: Number,
+        enum: [1,2,3],
         required: true
     },
-    name: {
+    activity: {
+        type: String,
+        required: true
+    },
+    sourceCode: {
         type: String,
         required: true
     }
