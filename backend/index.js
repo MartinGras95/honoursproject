@@ -3,6 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import routes from './routes/Routes';
+import cors from 'cors';
 
 // create webserver with express
 const app = express();
@@ -22,6 +23,9 @@ mongoose.connect('mongodb+srv://martingras:titilayo@examplemerncluster.rnhwh.mon
 // bodyparser setup - so requests can be transpild to what db can understand
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
+
+// CORS setup
+app.use(cors());
 
 // Making routes available to the application
 routes(app);

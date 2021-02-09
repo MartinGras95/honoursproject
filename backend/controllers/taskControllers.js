@@ -19,4 +19,12 @@ export const addNewTask = (req,res) => {
     });
 }
 
-// function 
+// Fetch all tasks
+export const getTasks = (req,res) => {
+    Task.find({},(err,Activity) => {
+        if(err){
+            res.send(err)
+        }
+        res.json(Task);
+    });
+}

@@ -2,90 +2,38 @@ import React from 'react';
 import js from '../images/js.jpg';
 import {Link} from 'react-router-dom';
 
-function Courses(){
+const Courses = (props) => {
     return(
         <div className="container">
-            <div className="row">
-                <div className="col s2">
-                    <h4>JavaScript Basics</h4>
-                </div>
+        <div className="row">
+            <div className="col s2">
+                <h4>JavaScript Basics</h4>
             </div>
-            <div className="row">
-                <div className="col s12 m6 l3">
-                    <div className="row">
-                        <div className="col s12">
-                            <div className="card">
-                                <Link to="/activity">
-                                    <div className="card-image">
-                                        <img src={js} alt="javascript logo" />
-                                        <span className="card-title">JS Activity 1</span>
-                                    </div>
-                                </Link>
-                                <div className="card-content">
-                                    <p>Learn basics of JavaScript in this basic activity!</p>
-                                </div>
-                                <div className="card-action">
-                                    <Link to="/activity">Start Now</Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col s12 m6 l3">
-                    <div className="row">
-                        <div className="col s12">
-                            <div className="card">
+        </div>
+        <div className="row">
+            {props.activities.map((item) => (
+            <div key={item._id} className="col s12 m6 l3">
+                <div className="row">
+                    <div className="col s12">
+                        <div className="card">
+                            <Link to="/activity">
                                 <div className="card-image">
                                     <img src={js} alt="javascript logo" />
-                                    <span className="card-title">JS Activity 2</span>
+                                    <span className="card-title">{item.name}</span>
                                 </div>
-                                <div className="card-content">
-                                    <p>Learn basics of JavaScript in this basic activity!</p>
-                                </div>
-                                <div className="card-action">
-                                    <a href="#!">Start Now</a>
-                                </div>
+                            </Link>
+                            <div className="card-content">
+                                <p>Learn basics of JavaScript in this basic activity!</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col s12 m6 l3">
-                    <div className="row">
-                        <div className="col s12">
-                            <div className="card">
-                                <div className="card-image">
-                                    <img src={js} alt="javascript logo" />
-                                    <span className="card-title">JS Activity 3</span>
-                                </div>
-                                <div className="card-content">
-                                    <p>Learn basics of JavaScript in this basic activity!</p>
-                                </div>
-                                <div className="card-action">
-                                    <a href="#!">Start Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col s12 m6 l3">
-                    <div className="row">
-                        <div className="col s12">
-                            <div className="card">
-                                <div className="card-image">
-                                    <img src={js} alt="javascript logo"/>
-                                    <span className="card-title">JS Activity 4</span>
-                                </div>
-                                <div className="card-content">
-                                    <p>Learn basics of JavaScript in this basic activity!</p>
-                                </div>
-                                <div className="card-action">
-                                    <a href="#!">Start Now</a>
-                                </div>
+                            <div className="card-action">
+                                <Link to="/activity">Start Now</Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            ))}
+            </div> 
         </div>
     )
 }
