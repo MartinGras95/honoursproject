@@ -9,12 +9,12 @@ function Navbar() {
     return(
         <nav>
             <div className="nav-wrapper purple darken-2">
-                <a href="/" className="brand-logo">codeMate</a>
+                <a href="/home" className="brand-logo">CoDaily</a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down" style={navStyle}>
                     <Link to="/account">
                         <li>Account</li>
                     </Link>
-                    <Link to="#!">
+                    <Link to="/">
                         <li>Sign Out</li>
                     </Link>
                 </ul>

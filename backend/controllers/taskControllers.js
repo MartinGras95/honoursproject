@@ -21,10 +21,20 @@ export const addNewTask = (req,res) => {
 
 // Fetch all tasks
 export const getTasks = (req,res) => {
-    Task.find({},(err,Activity) => {
+    Task.find({},(err,Task) => {
         if(err){
             res.send(err)
         }
         res.json(Task);
     });
 }
+
+// Fetch specific task
+export const getTaskWithActivity = (req,res) => {
+    Task.find({activity: req.params.activity},(err,Task) => {
+        if(err){
+            res.send(err);
+        }
+        res.send(Task);
+    });
+};

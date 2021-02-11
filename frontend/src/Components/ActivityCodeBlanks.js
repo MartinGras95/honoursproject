@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function ActivityCodeBlanks() {
+const ActivityCodeBlanks = (props) => {
+
+    // Variable to store correct tasks
+    var tasks = [];
+    // Activity that the user selected
+    var currentActivity = props.taskProps.name;
+ 
+    // extract correct tasks
+     props.taskProps.tasks.forEach((task) => {
+         if(task.type == 1 && task.activity == currentActivity){
+             tasks.push(task);
+         }
+     });
+
+
     // Temporary styles for the code areas
     const codeAreaStyles = {
         border: "1px black solid",
@@ -21,12 +35,19 @@ function ActivityCodeBlanks() {
         console.log(xy);
     }
 
-
-
     return (
         <div className="container">
-            <h4>Activity Type 1</h4>
-            <blockquote>Fill in the blanks in the code and run it! Observe what happens and experiment with different imputs!</blockquote>
+            
+            {tasks.map((item) => (
+                <div key={item._id}>
+                    <h4>Task</h4>
+                    <blockquote>{item.question}</blockquote>
+                    <div dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
+                </div>
+            ))}
+
+            <h4>Task</h4>
+            <blockquote></blockquote>
             <div className="row">
                 <div className="col s12 m6">
                     <h3>Input</h3>

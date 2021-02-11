@@ -3,7 +3,7 @@
 // imports
 import { addNewUser, getUsers } from '../controllers/userControllers';
 import { addNewActivity, getActivities } from '../controllers/activityControllers';
-import { addNewTask,getTasks } from '../controllers/taskControllers';
+import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
 
 
 // variable to hold all routes
@@ -28,6 +28,9 @@ const routes = (app) => {
         .get(getTasks)
     // POST endpoint
         .post(addNewTask);
+    
+    app.route('/tasks/:activity')
+        .get(getTaskWithActivity)
 }
 
 export default routes;
