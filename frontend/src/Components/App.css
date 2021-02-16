@@ -15,3 +15,15 @@ main {
 .btnWrong:focus{
   background-color: #f44336 ;
 }
+
+.codeAreaStyles{
+  border: 1px black solid;
+  padding: 1rem;
+  min-Height: 200px;
+  min-Width: 200px;
+}
+
+.answerButtonStyles{
+  min-width: 200px;
+  margin: 5px;
+}

@@ -26,9 +26,9 @@ class App extends React.Component {
   
   // run after render
   componentDidMount() {
-    // url to activities list
+    // url to activities and tasks
     const url = 'http://localhost:4000/activities';
-    const url2 = 'http://localhost:4000/tasks/jsbact01'
+    const url2 = 'http://localhost:4000/tasks'
 
     // call api and set activities in the state to the response data
     axios.get(url)

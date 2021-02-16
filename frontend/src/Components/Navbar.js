@@ -10,7 +10,7 @@ function Navbar() {
         <nav>
             <div className="nav-wrapper purple darken-2">
                 <a href="/home" className="brand-logo">CoDaily</a>
-                <ul id="nav-mobile" className="right hide-on-med-and-down" style={navStyle}>
+                <ul id="nav-mobile" className="right" style={navStyle}>
                     <Link to="/account">
                         <li>Account</li>
                     </Link>

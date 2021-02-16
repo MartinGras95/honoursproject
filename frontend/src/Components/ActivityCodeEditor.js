@@ -1,16 +1,21 @@
 import React from 'react';
 
-function ActivityCodeEditor() {
+function ActivityCodeEditor(props) {
 
-    const codeAreaStyles = {
-        border: "1px black solid",
-        padding: "1rem",
-        minHeight: "200px",
-        minWidth: "200px"
-    }
+    // Variable to store correct tasks
+    const tasks = [];
+    // Activity that the user selected
+    const currentActivity = props.taskProps.name;
+    
+    // extract correct tasks
+        props.taskProps.tasks.forEach((task) => {
+            if(task.type == 2 && task.activity == currentActivity){
+                tasks.push(task);
+            }
+        });
 
     // Process user's javascript
-    function processCode(){
+    function solveCode(){
         // clear the output area
         document.getElementById("txtCodeEditorOutput").innerText= " ";
 
@@ -34,27 +39,19 @@ function ActivityCodeEditor() {
 
     return(
         <div className="container">
-            <h4>Activity Type 2</h4>
-            <blockquote>Write a program that will log your name to the console!</blockquote>
-
-            <div className="row">
-                <div className="col s12 m6">
-                    <h3>Input</h3>
-                    <textarea id="txtUserCode" style={codeAreaStyles} placeholder="Start Coding Here!"></textarea>
-                </div>
-                <div className="col s12 m6">
-                    <h3>Output</h3>
-                    <div style={codeAreaStyles} id="txtCodeEditorOutput">
-                        
+        {tasks.map((item) => (
+            <div key={item._id}>
+                <h4>Task</h4>
+                <blockquote>{item.question}</blockquote>
+                <div className="row" dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
+                <div className="row">
+                    <div className="col s12">
+                        <button className="btn" onClick={solveCode}>Run</button>
                     </div>
-                </div>
             </div>
-            <div className="row">
-                <div className="col s12">
-                    <button className="btn" onClick={processCode}>Run</button>
-                </div>
             </div>
-        </div>
+        ))}
+    </div>
     )
 }
 

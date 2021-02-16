@@ -13,10 +13,10 @@ const Activity = (props) => {
           <ActivityCodeBlanks taskProps={taskInfo} />
           <br />
 
-          <ActivityCodeEditor />
+          <ActivityCodeEditor taskProps={taskInfo} />
           <br />
 
-          <ActivityQuestions />
+          <ActivityQuestions taskProps={taskInfo} />
 
         </div>
       )
