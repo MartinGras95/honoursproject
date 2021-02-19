@@ -1,9 +1,10 @@
 // This file contain all routes relevant to users
 
 // imports
-import { addNewUser, getUsers } from '../controllers/userControllers';
+import { addNewUser, getUsers, getUser,login } from '../controllers/userControllers';
 import { addNewActivity, getActivities } from '../controllers/activityControllers';
 import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
+
 
 
 // variable to hold all routes
@@ -31,6 +32,24 @@ const routes = (app) => {
     
     app.route('/tasks/:activity')
         .get(getTaskWithActivity)
+
+        
+    
+
+// get user route
+    // app.route('/user')
+    //     .get(getUser)
+    //     .post(login)
+
+
+
+
+
+
 }
+
+
+
+
 
 export default routes;

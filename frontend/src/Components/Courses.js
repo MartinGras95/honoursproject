@@ -10,6 +10,8 @@ const Courses = (props) => {
         minHeight: "100px"
     }
 
+
+
     return(
         <div className="container">
         <div className="row">

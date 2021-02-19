@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-function Login(){
+
+// bringing in changeUser as a prop to trigger the correct user when logged in
+const Login = ({changeUserToStudent,changeUserToStaff}) => {
 
     const loginButtonStyles ={
         width:'65%'
@@ -16,14 +18,16 @@ function Login(){
             </div>
             <div className="row">
                 <div className="col s12 center">
-                    <Link to="/home">
-                        <a href="#!" className="waves-effect waves-light btn-large" style={loginButtonStyles}>Student Login</a>
+                    <Link to="/home" >
+                        <button  onClick={changeUserToStudent} className="waves-effect waves-light btn-large" style={loginButtonStyles} >Student Login</button>
                     </Link>
                 </div>
             </div>
             <div className="row">
                 <div className="col s12 center">
-                    <a href="#!" className="waves-effect waves-light btn-large disabled" style={loginButtonStyles}>Staff Login</a>
+                    <Link to="/home">
+                        <button onClick={changeUserToStaff} className="waves-effect waves-light btn-large" style={loginButtonStyles} >Staff Login</button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -27,3 +27,11 @@ main {
   min-width: 200px;
   margin: 5px;
 }
+
+.dashboard-invis{
+  display: none;
+}
+
+.dashboard-visi{
+  display: flex;
+}

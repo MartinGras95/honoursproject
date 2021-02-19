@@ -8,7 +8,7 @@ function Layout(props){
     return(
             <div className="pageWrapper">
                 <header>
-                    <Navbar />
+                    <Navbar isStaff={props.isStaff} changeUserToStudent={props.changeUserToStudent} changeUserToStaff={props.changeUserToStaff} />
                 </header>
                 <main>
                     {props.children}

@@ -1,10 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import axios from 'axios';
 
 // Pages import
 import Account from '../Pages/account'
 import Activity from '../Pages/Activity'
+import Dashboard from '../Pages/dashboard'
 
 // import './App.css';
 // Component imports
@@ -15,20 +16,37 @@ import Login from './Login';
 class App extends React.Component {
 
   constructor(props){
+
     // Assigning props to constructor which can be used in the class
     super(props);
     // State to hold data from db
     this.state = {
       activities: [],
       tasks: [],
+      isStaff: false,
     }
+    // binding functions
+    this.changeUserToStudent = this.changeUserToStudent.bind(this);
+    this.changeUserToStaff = this.changeUserToStaff.bind(this);
   }
+
+  // Functions to switch from student to staff and vice versa
+  changeUserToStudent (){
+    this.setState({isStaff:false})
+
+  }
+  changeUserToStaff (){
+    this.setState({isStaff:true})
+  }
+
   
   // run after render
   componentDidMount() {
+
     // url to activities and tasks
     const url = 'http://localhost:4000/activities';
-    const url2 = 'http://localhost:4000/tasks'
+    const url2 = 'http://localhost:4000/tasks';
+
 
     // call api and set activities in the state to the response data
     axios.get(url)
@@ -51,29 +69,29 @@ class App extends React.Component {
     .catch((error)=>{
       console.log(error);
     })
+
   };
-  
-
-
 
   render () {
+
+
+
     return (
       // Router used to link pages on the webpage
       // Sending activities to courses component to display all activities
       // Sending tasks to courses component to pass them onto each activity
       <Router>
-        <Layout>
+        <Layout isStaff={this.state.isStaff} >
           <Switch>
-            <Route path="/" component={Login} exact={true}/>
-            <Route path="/home" render={() => <Courses activities={this.state.activities} tasks={this.state.tasks} />} />
+            <Route path="/" exact={true} render={() => <Login changeUserToStudent={this.changeUserToStudent} changeUserToStaff={this.changeUserToStaff}  />}/>
+            <Route path="/home" render={(props) => <Courses activities={this.state.activities} tasks={this.state.tasks} />} />
             <Route path="/account" component={Account} />
             <Route path="/activity" component={Activity} />
-          </Switch>
+            <Route path="/dashboard" component={Dashboard} />
+            </Switch>
         </Layout>
       </Router>
-
     );
   }
 }
-//tasks={this.state.tasks}
 export default App;

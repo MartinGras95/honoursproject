@@ -32,4 +32,21 @@ export const getUsers = (req,res) => {
     });
 }
 
+// Function to find user
+export const getUser =(req, res) => {
+    User.find({isStaff: req.body.isStaff}, (err, User)=> {
+        if(err) throw err;
+        res.json(User);
+    });
+}
+
+// Login function
+export const login = (req,res) => {
+    User.find({isStaff: req.body.isStaff}, (err, User) => {
+        if(err) throw err;
+        res.send({message: `logged in ${User}`});
+    })
+}
+
+
 
