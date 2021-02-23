@@ -28,3 +28,23 @@ export const getFeedbackRequests = (req,res) => {
         res.json(FeedbackRequest);
     });
 }
+
+// function to delete feedback request
+export const deleteFeedbackRequest = (req, res) => {
+    FeedbackRequest.findByIdAndDelete({_id: req.params._id},(err, FeedbackRequest) => {
+        if(err){
+            res.send(err)
+        }
+        res.json({msg:"Request deleted",request: FeedbackRequest})
+    });
+}
+
+// Function to get specific feedback request by _id
+export const getFeedbackRequestById = (req,res) => {
+    FeedbackRequest.findById({_id: req.params._id}, (err, FeedbackRequest) => {
+        if(err){
+            res.send(err)
+        }
+        res.json(FeedbackRequest)
+    });
+}

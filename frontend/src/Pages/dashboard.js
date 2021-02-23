@@ -20,11 +20,45 @@ const Dashboard = () => {
             .catch((error) => {
                 console.log(error)
             })
-        }catch (e){
-            console.log(e)
+        }catch (error){
+            console.log(error)
         }
 
     };
+
+    // Reply
+    const sendToReply = async(item) => {
+        try{
+            // Populate the message box with the selected feedback request
+            document.getElementById("msgFrom").innerText = `From: ${item.sender}` ;
+            document.getElementById("msgSubject").innerText = `Subject: ${item.subject}` ;
+            document.getElementById("msgLocation").innerText = `Location: ${item.location}` ;
+            document.getElementById("msgMsg").innerText = `Message: ${item.msg}` ;
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+
+
+    // DELETE TESTS
+    // // Delete feedback request from inbox
+    // function deleteFeedbackRequest (id){
+        
+    //     try{
+    //         console.log(id)
+    //     }catch (error){
+    //         console.log(error)
+    //     }
+    // }
+
+    // axios.post(`http://localhost:4000/feedbackRequest/delete/${id}`)
+    // .then(() => {
+    //     refreshInbox();
+    // })
+    // .catch((error) => {
+    //     console.log(error)
+    // });
 
     // Run after render of component
     useEffect(() => {
@@ -41,7 +75,11 @@ const Dashboard = () => {
                         <div>
                             {inbox.map((item) => (
                                 <div key={item._id}>
-                                    <p>From: {item.sender} || Subject: {item.subject}</p>
+                                    <div>
+                                        <div onClick={() => {sendToReply(item)}}>From: {item.sender} ***** Subject: {item.subject} *****
+                                            <button>delete</button> 
+                                        </div> 
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -51,7 +89,11 @@ const Dashboard = () => {
                 </div>
                 <div className="col s12 m6">
                     <h4>Message</h4>
-                    <div className="codeAreaStyles">
+                    <div id="msgBox" className="codeAreaStyles scrollBox">
+                        <p id="msgFrom"></p>
+                        <p id="msgSubject"></p>
+                        <p id="msgLocation"></p>
+                        <p id="msgMsg"></p>
                     
                     </div>
                 </div>

@@ -21,6 +21,10 @@ main {
   padding: 1rem;
   min-Height: 200px;
   min-Width: 200px;
+  max-height: 200px;
+}
+.scrollBox{
+  overflow: scroll;
 }
 
 .answerButtonStyles{

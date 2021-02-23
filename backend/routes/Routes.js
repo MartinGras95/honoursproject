@@ -4,7 +4,7 @@
 import { addNewUser, getUsers, getUser,login } from '../controllers/userControllers';
 import { addNewActivity, getActivities } from '../controllers/activityControllers';
 import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
-import { addNewFeedbackRequest, getFeedbackRequests } from '../controllers/feedbackRequestControllers'
+import { addNewFeedbackRequest, getFeedbackRequests,deleteFeedbackRequest, getFeedbackRequestById } from '../controllers/feedbackRequestControllers'
 
 
 
@@ -42,6 +42,14 @@ const routes = (app) => {
     app.route('/feedbackRequest')
         .get(getFeedbackRequests)
         .post(addNewFeedbackRequest)
+
+    // Find specific request
+    app.route('/feedbackRequest/:_id')
+        .get(getFeedbackRequestById)
+    
+    // Delete route
+    app.route('/feedbackRequest/delete/:_id')
+        .post(deleteFeedbackRequest)
 
 
 
