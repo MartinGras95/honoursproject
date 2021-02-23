@@ -4,6 +4,7 @@
 import { addNewUser, getUsers, getUser,login } from '../controllers/userControllers';
 import { addNewActivity, getActivities } from '../controllers/activityControllers';
 import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
+import { addNewFeedbackRequest, getFeedbackRequests } from '../controllers/feedbackRequestControllers'
 
 
 
@@ -33,12 +34,18 @@ const routes = (app) => {
     app.route('/tasks/:activity')
         .get(getTaskWithActivity)
 
-        
-    
-
 // get user route
     app.route('/user/:isStaff')
         .get(getUser)
+
+// Feedback request routes
+    app.route('/feedbackRequest')
+        .get(getFeedbackRequests)
+        .post(addNewFeedbackRequest)
+
+
+
+
 }
 
 

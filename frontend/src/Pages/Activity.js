@@ -7,7 +7,6 @@ import ActivityQuestions from '../Components/ActivityQuestions';
 
 const Activity = (props) => {
   const taskInfo = props.location.activityProps;
-  console.log(taskInfo);
       return(
         <div>
           <ActivityCodeBlanks taskProps={taskInfo} />
