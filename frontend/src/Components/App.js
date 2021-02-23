@@ -24,6 +24,7 @@ class App extends React.Component {
       activities: [],
       tasks: [],
       isStaff: false,
+      user:{}
     }
     // binding functions
     this.changeUserToStudent = this.changeUserToStudent.bind(this);
@@ -34,11 +35,31 @@ class App extends React.Component {
   changeUserToStudent (){
     this.setState({isStaff:false})
 
-  }
-  changeUserToStaff (){
-    this.setState({isStaff:true})
+    // Also update the logged in user in the state
+    axios.get(`http://localhost:4000/user/false`)
+    .then((Response) => {
+      this.setState({user: Response.data})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
   }
 
+  // Change to staff member
+  changeUserToStaff (){
+    this.setState({isStaff:true})
+
+    // Also update the logged in user in the state
+    axios.get(`http://localhost:4000/user/true`)
+    .then((Response) => {
+      this.setState({user: Response.data})
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+  }
   
   // run after render
   componentDidMount() {
@@ -46,6 +67,8 @@ class App extends React.Component {
     // url to activities and tasks
     const url = 'http://localhost:4000/activities';
     const url2 = 'http://localhost:4000/tasks';
+    const url3 = 'http://localhost:4000/user/'
+
 
 
     // call api and set activities in the state to the response data
@@ -70,12 +93,11 @@ class App extends React.Component {
       console.log(error);
     })
 
+
   };
 
+
   render () {
-
-
-
     return (
       // Router used to link pages on the webpage
       // Sending activities to courses component to display all activities
@@ -85,7 +107,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact={true} render={() => <Login changeUserToStudent={this.changeUserToStudent} changeUserToStaff={this.changeUserToStaff}  />}/>
             <Route path="/home" render={(props) => <Courses activities={this.state.activities} tasks={this.state.tasks} />} />
-            <Route path="/account" component={Account} />
+            <Route path="/account" render={() => <Account user={this.state.user} />} />
             <Route path="/activity" component={Activity} />
             <Route path="/dashboard" component={Dashboard} />
             </Switch>

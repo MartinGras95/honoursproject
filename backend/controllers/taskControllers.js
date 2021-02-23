@@ -31,7 +31,7 @@ export const getTasks = (req,res) => {
 
 // Fetch specific task
 export const getTaskWithActivity = (req,res) => {
-    Task.find({activity: req.params.activity},(err,Task) => {
+    Task.find({activity: req.body.activity},(err,Task) => {
         if(err){
             res.send(err);
         }

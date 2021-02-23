@@ -37,15 +37,8 @@ const routes = (app) => {
     
 
 // get user route
-    // app.route('/user')
-    //     .get(getUser)
-    //     .post(login)
-
-
-
-
-
-
+    app.route('/user/:isStaff')
+        .get(getUser)
 }
 
 
