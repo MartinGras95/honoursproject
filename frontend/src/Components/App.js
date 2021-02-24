@@ -106,9 +106,9 @@ class App extends React.Component {
         <Layout isStaff={this.state.isStaff} >
           <Switch>
             <Route path="/" exact={true} render={() => <Login changeUserToStudent={this.changeUserToStudent} changeUserToStaff={this.changeUserToStaff}  />}/>
-            <Route path="/home" render={(props) => <Courses activities={this.state.activities} tasks={this.state.tasks} />} />
+            <Route path="/home" render={(props) => <Courses activities={this.state.activities} tasks={this.state.tasks} user={this.state.user} />} />
             <Route path="/account" render={() => <Account user={this.state.user} />} />
-            <Route path="/activity" component={Activity} />
+            <Route path="/activity" component={Activity} user={this.state.user} />
             <Route path="/dashboard" component={Dashboard} />
             </Switch>
         </Layout>

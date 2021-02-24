@@ -34,6 +34,7 @@ const Dashboard = () => {
             document.getElementById("msgSubject").innerText = `Subject: ${item.subject}` ;
             document.getElementById("msgLocation").innerText = `Location: ${item.location}` ;
             document.getElementById("msgMsg").innerText = `Message: ${item.msg}` ;
+            document.getElementById("msgCode").innerText = `Source Code: ${item.sourceCode}` ;
         }catch (error){
             console.log(error)
         }
@@ -71,7 +72,7 @@ const Dashboard = () => {
             <div className="row">
                 <div className="col m12">
                     <h4>Inbox</h4>
-                    <div className="codeAreaStyles">
+                    <div className="codeAreaStyles scrollBox">
                         <div>
                             {inbox.map((item) => (
                                 <div key={item._id}>
@@ -94,6 +95,7 @@ const Dashboard = () => {
                         <p id="msgSubject"></p>
                         <p id="msgLocation"></p>
                         <p id="msgMsg"></p>
+                        <p id="msgCode"></p>
                     
                     </div>
                 </div>

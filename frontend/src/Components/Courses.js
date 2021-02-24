@@ -30,7 +30,8 @@ const Courses = (props) => {
                                 pathname: '/activity',
                                 activityProps:{
                                     name: item.name,
-                                    tasks: props.tasks
+                                    tasks: props.tasks,
+                                    user: props.user
                                 }
                             }}>
                                 <div className="card-image">

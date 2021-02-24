@@ -22,7 +22,6 @@ export const feedbackRequestSchema = new Schema({
     },
     sourceCode: {
         type: String,
-        required: true
     }
 
 });

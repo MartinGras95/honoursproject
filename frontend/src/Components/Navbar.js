@@ -27,6 +27,9 @@ const Navbar = ({isStaff}) => {
                     <Link id="dashboard-link" className="dashboard-invis" to="/dashboard" >
                         <li>Dashboard</li>
                     </Link>
+                    <Link to="/home">
+                        <li>Courses</li>
+                    </Link>
                     <Link to="/account">
                         <li>Account</li>
                     </Link>
