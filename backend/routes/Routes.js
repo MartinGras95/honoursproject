@@ -49,7 +49,8 @@ const routes = (app) => {
     
     // Delete route
     app.route('/feedbackRequest/delete/:_id')
-        .post(deleteFeedbackRequest)
+        .delete(deleteFeedbackRequest)
+        
 
 
 

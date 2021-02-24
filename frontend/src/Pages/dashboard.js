@@ -41,25 +41,20 @@ const Dashboard = () => {
     }
 
 
-
-    // DELETE TESTS
-    // // Delete feedback request from inbox
-    // function deleteFeedbackRequest (id){
-        
-    //     try{
-    //         console.log(id)
-    //     }catch (error){
-    //         console.log(error)
-    //     }
-    // }
-
-    // axios.post(`http://localhost:4000/feedbackRequest/delete/${id}`)
-    // .then(() => {
-    //     refreshInbox();
-    // })
-    // .catch((error) => {
-    //     console.log(error)
-    // });
+    // Delete requests
+    const deleteRequest = async(id) => {
+        try{
+            await axios.delete(`http://localhost:4000/feedbackRequest/delete/${id}`)
+            .then(()=> {
+                refreshInbox();
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
 
     // Run after render of component
     useEffect(() => {
@@ -78,7 +73,7 @@ const Dashboard = () => {
                                 <div key={item._id}>
                                     <div>
                                         <div onClick={() => {sendToReply(item)}}>From: {item.sender} ***** Subject: {item.subject} *****
-                                            <button>delete</button> 
+                                            <button onClick={() => {deleteRequest(item._id)}}>delete</button> 
                                         </div> 
                                     </div>
                                 </div>
