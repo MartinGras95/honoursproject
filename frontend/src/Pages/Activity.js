@@ -9,6 +9,7 @@ import FeedbackRequestForm from '../Components/FeedbackRequestForm'
 const Activity = (props) => {
   const taskInfo = props.location.activityProps;
   console.log(taskInfo.name)
+  console.log(props)
       return(
         <div>
           <ActivityCodeBlanks taskProps={taskInfo} />

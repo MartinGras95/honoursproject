@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+    let currentDate = new Date();
+    let cDay = currentDate.getDate();
+    let cMonth = currentDate.getMonth() + 1;
+    let cYear = currentDate.getFullYear();
 
-    // State
+
+    // State variables
+    // inbox is the feedback requests from the db
     const [inbox, populateInbox] = useState([]);
+    // The user whose request is currently being replied to
+    const [clickedUser, updateClickedUser] = useState("");
 
     // Url to feedback requests
     const url = 'http://localhost:4000/feedbackRequest'
@@ -29,6 +37,9 @@ const Dashboard = () => {
     // Reply
     const sendToReply = async(item) => {
         try{
+            // update clicked person
+            updateClickedUser(item.senderID);
+
             // Populate the message box with the selected feedback request
             document.getElementById("msgFrom").innerText = `From: ${item.sender}` ;
             document.getElementById("msgSubject").innerText = `Subject: ${item.subject}` ;
@@ -56,6 +67,32 @@ const Dashboard = () => {
         }
     }
 
+    // Send feedback
+    const sendFeedback = async() => {
+        // post the reply to the user whose feedback request was clicked on(clickedUser)
+        try{
+            await axios.post(`http://localhost:4000/user/mail`,{
+                id:clickedUser, 
+                message: {
+                    feedbackID: Math.floor(Math.random() * 1000),
+                    sender: "Staff Member",
+                    content: document.getElementById("feedbackResponse").value,
+                    date: `${cDay}/${cMonth}/${cYear}`
+
+                }
+            })
+            .then(() => {
+                console.log("message sent")
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+
     // Run after render of component
     useEffect(() => {
         refreshInbox();
@@ -73,7 +110,7 @@ const Dashboard = () => {
                                 <div key={item._id}>
                                     <div>
                                         <div onClick={() => {sendToReply(item)}}>From: {item.sender} ***** Subject: {item.subject} *****
-                                            <button onClick={() => {deleteRequest(item._id)}}>delete</button> 
+                                            <button onClick={() => {deleteRequest(item._id)}}>x</button> 
                                         </div> 
                                     </div>
                                 </div>
@@ -96,10 +133,10 @@ const Dashboard = () => {
                 </div>
                 <div className="col s12 m6">
                     <h4>Reply</h4>
-                    <textarea className="codeAreaStyles">
+                    <textarea id="feedbackResponse" className="codeAreaStyles">
                     
                     </textarea>
-                    <button className="btn">Send</button>
+                    <button className="btn" onClick={sendFeedback}>Send</button>
                 </div>
 
             </div>

@@ -14,6 +14,7 @@ const FeedbackRequestForm = ({user,activity}) => {
     const sendFeedbackRequest = async () =>{
         const data ={
             sender: `${loggedUser.user.firstName} ${loggedUser.user.lastName}`,
+            senderID:`${loggedUser.user._id}`,
             subject: document.getElementById('subject').value,
             location: currActivity,
             msg: document.getElementById('txtMsg').value,

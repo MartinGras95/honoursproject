@@ -1,7 +1,7 @@
 // This file contain all routes relevant to users
 
 // imports
-import { addNewUser, getUsers, getUser,login } from '../controllers/userControllers';
+import { addNewUser, getUsers, getUser, sendMail } from '../controllers/userControllers';
 import { addNewActivity, getActivities } from '../controllers/activityControllers';
 import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
 import { addNewFeedbackRequest, getFeedbackRequests,deleteFeedbackRequest, getFeedbackRequestById } from '../controllers/feedbackRequestControllers'
@@ -16,6 +16,11 @@ const routes = (app) => {
         .get(getUsers)
     // POST endpoint
         .post(addNewUser);
+    
+    app.route('/user/mail')
+    // GET
+    // POST
+        .post(sendMail)
 
 // Activity routes
     app.route('/activities')

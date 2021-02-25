@@ -31,6 +31,8 @@ class App extends React.Component {
     this.changeUserToStaff = this.changeUserToStaff.bind(this);
   }
 
+
+
   // Functions to switch from student to staff and vice versa
   changeUserToStudent (){
     this.setState({isStaff:false})
@@ -109,7 +111,7 @@ class App extends React.Component {
             <Route path="/home" render={(props) => <Courses activities={this.state.activities} tasks={this.state.tasks} user={this.state.user} />} />
             <Route path="/account" render={() => <Account user={this.state.user} />} />
             <Route path="/activity" component={Activity} user={this.state.user} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard" component={Dashboard} user={this.state.user} />
             </Switch>
         </Layout>
       </Router>

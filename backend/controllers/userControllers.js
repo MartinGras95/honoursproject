@@ -32,13 +32,33 @@ export const getUsers = (req,res) => {
     });
 }
 
-// Function to find user
+// Function to find user by role 
 export const getUser =(req, res) => {
     User.find({isStaff: req.params.isStaff}, (err, User)=> {
         if(err) throw err;
         res.json(User);  
     });
 }
+
+
+// Function to send email to user
+export const sendMail = (req,res) => {
+    // Find user and update
+    User.findByIdAndUpdate(req.body.id,{$push:{inbox:req.body.message}}, (err) => {
+        if(err){
+            res.send(err);
+        }
+        res.send(`Message sent`)
+    })
+}
+
+// Function to delete an email
+
+
+
+
+
+
 
 
 
