@@ -21,6 +21,12 @@ const Activity = (props) => {
           <ActivityQuestions taskProps={taskInfo} />
           <br />
 
+          <div className="container">
+            <button className="btn" style={{minWidth:"100%", backgroundColor:"#8ACB88"}}>Mark Activity Completed</button>
+          </div>
+          <br />
+          
+
           <FeedbackRequestForm user={taskInfo.user[0]} activity={taskInfo.name} />
 
         </div>

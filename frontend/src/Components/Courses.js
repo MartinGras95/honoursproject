@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import js from '../images/js.jpg';
 import {Link} from 'react-router-dom';
 
@@ -10,7 +10,51 @@ const Courses = (props) => {
         minHeight: "100px"
     }
 
+    // After render check if logged user has completed each activity
+    // if completed apply a green border to activity
+    const checkActivity = async() => {
+        console.log("im inside checkActivity at the top")
+        try{
+            console.log("im inside checActivity try")
+                    // finished activities of user
+            const fActs = props.user[0].finishedActivities;
+            console.log(fActs)
+            // activity elements on the page
+            const acts = document.getElementsByClassName('card-title');
+            // activity names on page -> extracted from the card elements
+            const actNames = []
+            for (let i = 0; i < acts.length; i++) {
+                actNames.push(acts[i].textContent);
+            }
 
+            // compare each task with completed tasks from user
+            // if activity is finished then change style of that activity element
+            for (let i = 0; i < fActs.length; i++) {
+                if(actNames.includes(fActs[i]) ){ 
+                    
+                    // tell document to change border of activity which has same name as finished activity
+                    document.getElementById(fActs[i]).style ="border: 3px solid green";
+                    // also change start now to completed
+                    document.getElementById(fActs[i]).lastElementChild.textContent = "Completed";
+                    document.getElementById(fActs[i]).lastElementChild.style = "color: green";
+
+                }else{
+                    console.log("no tasks finished")
+                }
+                
+            }
+        }catch(error){
+            console.log(error)
+        }
+
+    }
+
+    // Run after render of component
+    useEffect(() => {
+        console.log("im inside useEffect")
+        checkActivity();
+    },[]);
+    
 
     return(
         <div className="container">
@@ -24,7 +68,7 @@ const Courses = (props) => {
             <div key={item._id} className="col s12 m6 l3">
                 <div className="row">
                     <div className="col s12">
-                        <div className="card">
+                        <div className="card" id={item.name}>
                              {/* Sending activity name to activity page to be able to fetch correct tasks from DB & sending tasks along too*/}
                             <Link to={{
                                 pathname: '/activity',

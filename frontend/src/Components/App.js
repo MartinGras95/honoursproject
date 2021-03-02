@@ -31,8 +31,6 @@ class App extends React.Component {
     this.changeUserToStaff = this.changeUserToStaff.bind(this);
   }
 
-
-
   // Functions to switch from student to staff and vice versa
   changeUserToStudent (){
     this.setState({isStaff:false})
@@ -45,7 +43,6 @@ class App extends React.Component {
     .catch((error) => {
       console.log(error)
     })
-
   }
 
   // Change to staff member
@@ -60,7 +57,6 @@ class App extends React.Component {
     .catch((error) => {
       console.log(error)
     })
-
   }
   
   // run after render
@@ -69,7 +65,6 @@ class App extends React.Component {
     // url to activities and tasks
     const url = 'http://localhost:4000/activities';
     const url2 = 'http://localhost:4000/tasks';
-    const url3 = 'http://localhost:4000/user/'
 
 
 
@@ -108,7 +103,7 @@ class App extends React.Component {
         <Layout isStaff={this.state.isStaff} >
           <Switch>
             <Route path="/" exact={true} render={() => <Login changeUserToStudent={this.changeUserToStudent} changeUserToStaff={this.changeUserToStaff}  />}/>
-            <Route path="/home" render={(props) => <Courses activities={this.state.activities} tasks={this.state.tasks} user={this.state.user} />} />
+            <Route path="/home" render={() => <Courses activities={this.state.activities} tasks={this.state.tasks} user={this.state.user} />} />
             <Route path="/account" render={() => <Account user={this.state.user} />} />
             <Route path="/activity" component={Activity} user={this.state.user} />
             <Route path="/dashboard" component={Dashboard} user={this.state.user} />

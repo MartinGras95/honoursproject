@@ -33,8 +33,13 @@ function ActivityCodeEditor(props) {
         }
 
         // Log the executed code 
-        console.log(eval(userCode));
-        
+        // Error handling
+        try{
+            console.log(eval(userCode));
+        }catch(err){
+            console.log(err)
+        }
+ 
     }
 
     return(

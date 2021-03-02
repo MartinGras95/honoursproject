@@ -36,6 +36,9 @@ export const UserSchema = new Schema({
     },
     inbox:{
         type: Array
+    },
+    finishedActivities:{
+        type: Array
     }
 });
 

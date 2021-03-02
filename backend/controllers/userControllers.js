@@ -53,6 +53,17 @@ export const sendMail = (req,res) => {
 }
 
 // Function to delete an email
+// find user by the id of the logged user
+// pull the email object according to the feedbackID
+export const deleteMail = (req,res) => {
+    User.findOneAndUpdate({_id: req.body.id},{ $pull: {inbox: { feedbackID: Number(req.body.fid)}}}, (err,data) => {
+        if(err){
+            console.log(err)
+        }
+        res.send(data)
+    })
+}
+
 
 
 
