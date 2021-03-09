@@ -32,10 +32,10 @@ const ActivityCodeBlanks = (props) => {
     // It is currently required to create each task as a jsx element, convert to html using online converter 
     // And advised to minify the converted html using a minifying tool online then insert into DB
     return (
-        <div className="container">
+        <>
             {tasks.map((item) => (
                 <div key={item._id}>
-                    <h4>Task</h4>
+                    <h4>Task 1</h4>
                     <blockquote>{item.question}</blockquote>
                     <div className="row" dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
                     <div className="row">
@@ -45,7 +45,7 @@ const ActivityCodeBlanks = (props) => {
                 </div>
                 </div>
             ))}
-        </div>
+        </>
     )
 }
 

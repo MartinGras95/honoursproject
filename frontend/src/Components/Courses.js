@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 
 const Courses = (props) => {
-
     // Temp styles
     const cardStyles = {
         minHeight: "100px"
@@ -12,13 +11,11 @@ const Courses = (props) => {
 
     // After render check if logged user has completed each activity
     // if completed apply a green border to activity
-    const checkActivity = async() => {
-        console.log("im inside checkActivity at the top")
+     const checkActivity = async() => {
         try{
-            console.log("im inside checActivity try")
-                    // finished activities of user
-            const fActs = props.user[0].finishedActivities;
-            console.log(fActs)
+            // finished activities of user
+            const fActs = localStorage.getItem("finishedActivities").split(',');
+
             // activity elements on the page
             const acts = document.getElementsByClassName('card-title');
             // activity names on page -> extracted from the card elements
@@ -43,58 +40,61 @@ const Courses = (props) => {
                 }
                 
             }
+
         }catch(error){
             console.log(error)
         }
+        
 
     }
 
     // Run after render of component
     useEffect(() => {
-        console.log("im inside useEffect")
         checkActivity();
+        
     },[]);
     
 
     return(
         <div className="container">
         <div className="row">
+            <div className="col s12">
+                <h2>Activities</h2> 
+            </div>
+        </div>
+        <div className="row">
             <div className="col s2">
-                <h4>JavaScript Basics</h4>
+                <h3>JavaScript Basics</h3>
             </div>
         </div>
         <div className="row">
             {props.activities.map((item) => (
-            <div key={item._id} className="col s12 m6 l3">
-                <div className="row">
-                    <div className="col s12">
-                        <div className="card" id={item.name}>
-                             {/* Sending activity name to activity page to be able to fetch correct tasks from DB & sending tasks along too*/}
-                            <Link to={{
-                                pathname: '/activity',
-                                activityProps:{
-                                    name: item.name,
-                                    tasks: props.tasks,
-                                    user: props.user
-                                }
-                            }}>
-                                <div className="card-image">
-                                    <img src={js} alt="javascript logo" />
-                                    <span className="card-title">{item.name}</span>
-                                </div>
-                            </Link>
-                            <div style={cardStyles} className="card-content">
-                                <p>{item.description}</p>
-                            </div>
-                            <div className="card-action">
-                                <Link to={{
-                                    pathname: '/activity',
-                                    activityProps:{
-                                        name: item.name
-                                    }
-                                }}>Start Now</Link>
-                            </div>
+            <div key={item._id} className="col s12 m6 l4">
+                <div className="card" id={item.name}>
+                        {/* Sending activity name to activity page to be able to fetch correct tasks from DB & sending tasks along too*/}
+                    <Link to={{
+                        pathname: '/activity',
+                        activityProps:{
+                            name: item.name,
+                            tasks: props.tasks,
+                            user: props.user
+                        }
+                    }}>
+                        <div className="card-image">
+                            <img src={js} alt="javascript logo" />
+                            <span className="card-title">{item.name}</span>
                         </div>
+                    </Link>
+                    <div style={cardStyles} className="card-content">
+                        <p>{item.description}</p>
+                    </div>
+                    <div className="card-action">
+                        <Link to={{
+                            pathname: '/activity',
+                            activityProps:{
+                                name: item.name
+                            }
+                        }}>Start Now</Link>
                     </div>
                 </div>
             </div>

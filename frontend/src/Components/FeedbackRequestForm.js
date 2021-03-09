@@ -24,6 +24,7 @@ const FeedbackRequestForm = ({user,activity}) => {
             await axios.post('http://localhost:4000/feedbackRequest',data)
             .then((Response) => {
                 console.log(Response.data)
+                window.alert("Feedback request sent successfully!")
             })
             .catch((error) => {
                 console.log(error)
@@ -34,9 +35,9 @@ const FeedbackRequestForm = ({user,activity}) => {
     }
 
     return(
-        <div className="container">
+        <>
             <h4>Request Feedback</h4>
-            <blockquote>Ask your tutor for help! </blockquote>
+            <blockquote>Stuck? Ask your tutor for help! </blockquote>
             <div className="row">
                 <div className="col s12">
                     <div className="row">
@@ -65,7 +66,7 @@ const FeedbackRequestForm = ({user,activity}) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </>
         
     )
 
