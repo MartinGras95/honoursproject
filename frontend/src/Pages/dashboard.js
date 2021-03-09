@@ -58,6 +58,12 @@ const Dashboard = (props) => {
             await axios.delete(`http://localhost:4000/feedbackRequest/delete/${id}`)
             .then(()=> {
                 refreshInbox();
+                // Clear the message box
+                document.getElementById("msgFrom").innerText = `` ;
+                document.getElementById("msgSubject").innerText = `` ;
+                document.getElementById("msgLocation").innerText = `` ;
+                document.getElementById("msgMsg").innerText = `` ;
+                document.getElementById("msgCode").innerText = `` ;
             })
             .catch((error) => {
                 console.log(error)
@@ -83,6 +89,7 @@ const Dashboard = (props) => {
             })
             .then(() => {
                 console.log("message sent")
+                window.alert("Feedback sent successfully")
             })
             .catch((error) => {
                 console.log(error)
@@ -103,16 +110,18 @@ const Dashboard = (props) => {
         <div className="container">
             <div className="row">
                 <div className="col m12">
-                    <h4>Inbox</h4>
+                    <h4>Feedback Requests</h4>
                     <div className="codeAreaStyles scrollBox">
                         <div>
                             {inbox.map((item) => (
-                                <div key={item._id}>
-                                    <div>
-                                        <div onClick={() => {sendToReply(item)}}>From: {item.sender} ***** Subject: {item.subject} *****
-                                            <button onClick={() => {deleteRequest(item._id)}}>x</button> 
-                                        </div> 
+                                <div key={item._id} className="row inboxRow">
+                                    <div className="col s10">
+                                        <div onClick={() => {sendToReply(item)}}>From: {item.sender} ***** Subject: {item.subject} *****</div>  
                                     </div>
+                                    <div className="col s2">
+                                        <button className="waves-effect waves-light btn-small red" onClick={() => {deleteRequest(item._id)}}>x</button> 
+                                    </div>
+                                    <div className="divider"></div>
                                 </div>
                             ))}
                         </div>

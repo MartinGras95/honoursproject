@@ -33,15 +33,20 @@ function ActivityCodeEditor(props) {
         }
 
         // Log the executed code 
-        console.log(eval(userCode));
-        
+        // Error handling
+        try{
+            console.log(eval(userCode));
+        }catch(err){
+            console.log(err)
+        }
+ 
     }
 
     return(
-        <div className="container">
+        <>
         {tasks.map((item) => (
             <div key={item._id}>
-                <h4>Task</h4>
+                <h4>Task 2</h4>
                 <blockquote>{item.question}</blockquote>
                 <div className="row" dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
                 <div className="row">
@@ -51,7 +56,7 @@ function ActivityCodeEditor(props) {
             </div>
             </div>
         ))}
-    </div>
+    </>
     )
 }
 

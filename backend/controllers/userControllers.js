@@ -52,7 +52,36 @@ export const sendMail = (req,res) => {
     })
 }
 
+// Function to get mail
+export const getMail = (req,res) => {
+    // Find user by id and send back inbox
+    User.findById({_id: req.params.id}, (err,User) => {
+        if (err) throw err;
+        res.send(User.inbox)
+    })
+}
+
 // Function to delete an email
+// find user by the id of the logged user
+// pull the email object according to the feedbackID
+export const deleteMail = (req,res) => {
+    User.findOneAndUpdate({_id: req.body.id},{ $pull: {inbox: { feedbackID: Number(req.body.fid)}}}, (err,data) => {
+        if(err){
+            console.log(err)
+        }
+        res.send(data)
+    })
+}
+
+// function to complete activity
+ export const completeActivity = (req,res) => {
+    User.findOneAndUpdate({_id: req.body.id},{ $push: { finishedActivities: req.body.activity}}, (err, data) => {
+        if(err){
+            console.log(err)
+        }
+        res.send(data)
+    })
+ }
 
 
 

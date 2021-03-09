@@ -32,10 +32,15 @@ main {
   margin: 5px;
 }
 
-.dashboard-invis{
+.invis{
   display: none;
 }
 
-.dashboard-visi{
+.visi{
   display: flex;
+}
+
+.inboxRow{
+  margin-top: 20px;
+  cursor: pointer;
 }

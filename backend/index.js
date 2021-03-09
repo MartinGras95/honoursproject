@@ -31,6 +31,8 @@ mongoose.connect('mongodb+srv://martingras:titilayo@examplemerncluster.rnhwh.mon
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+// Deprication solution
+mongoose.set('useFindAndModify', false);
 
 // bodyparser setup - so requests can be transpild to what db can understand
 app.use(bodyparser.urlencoded({extended: true}));

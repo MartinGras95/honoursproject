@@ -16,34 +16,18 @@ function ActivityQuestions(props) {
 
 
     return(
-        <div className="container">
+        <>
             {tasks.map((item) => (
                 <div key={item._id}>
-                    <h4>Task</h4>
+                    <h4>Task 3</h4>
                     <blockquote>{item.question}</blockquote>
                     <div className="row" dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
                 </div>
             ))}
-        </div>
+        </>
     )
 }
 
-/*
-<div className="container">
-<h4>Activity Type 3</h4>
-<blockquote>Which of these is valid JavaScript code?</blockquote>
-<div className="row">
-     <div className="col s12 m4">
-         <button className="btn btnCorr answerButtonStyles">var x = 5;</button>
-     </div>
-     <div className="col s12 m4">
-         <button className="btn btnWrong answerButtonStyles">var x = 5;;</button>
-     </div>
-     <div className="col s12 m4">
-         <button className="btn btnWrong answerButtonStyles">variable x = 5;</button>
-     </div>
-</div>
-</div>
-*/
+
 
 export default ActivityQuestions;

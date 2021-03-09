@@ -31,7 +31,7 @@ const Login = ({changeUserToStudent,changeUserToStaff}) => {
                 <div className="container">
                 <div className="row">
                     <div className="col s12 center">
-                        <h3>Log in</h3>
+                        <h3>Sign in</h3>
                     </div>
                 </div>
                 <div className="row">
