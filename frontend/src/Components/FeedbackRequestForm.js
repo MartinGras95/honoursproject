@@ -2,19 +2,21 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const FeedbackRequestForm = ({user,activity}) => {
-    // Function to create a new feedback request to the DB
-    // 
 
-    // State
-    const [loggedUser, logUser] = useState({user});
-    const [currActivity, changeActivity] = useState(activity);
+    // State variables
+    const [loggedUser, logUser] = useState({
+        _id: localStorage.getItem("_id"),
+        firstName: localStorage.getItem("firstName"),
+        lastName: localStorage.getItem("lastName"),
+    });
+    const [currActivity, changeActivity] = useState(localStorage.getItem("currentActivity"));
 
 
 
     const sendFeedbackRequest = async () =>{
         const data ={
-            sender: `${loggedUser.user.firstName} ${loggedUser.user.lastName}`,
-            senderID:`${loggedUser.user._id}`,
+            sender: `${loggedUser.firstName} ${loggedUser.lastName}`,
+            senderID:`${loggedUser._id}`,
             subject: document.getElementById('subject').value,
             location: currActivity,
             msg: document.getElementById('txtMsg').value,

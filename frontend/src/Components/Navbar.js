@@ -18,7 +18,6 @@ const Navbar = () => {
         // If user is logged in make navigation links available and vice versa
         if(localStorage.getItem("loggedIn") === "true"){
 
-            console.log("logged in")
             document.getElementById("courses-link").className= "visi";
             document.getElementById("account-link").className= "visi";
             document.getElementById("logout-link").className= "visi";
@@ -33,7 +32,6 @@ const Navbar = () => {
                 document.getElementById("dashboard-link").className = 'invis';
             }
         }else{
-            console.log("not logged")
             document.getElementById("courses-link").className= "invis";
             document.getElementById("account-link").className= "invis";
             document.getElementById("account-link").className= "invis";

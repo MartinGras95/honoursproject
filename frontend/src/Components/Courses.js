@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 
 const Courses = (props) => {
+
     // Temp styles
     const cardStyles = {
         minHeight: "100px"
@@ -48,6 +49,13 @@ const Courses = (props) => {
 
     }
 
+    // Set activity name
+    const setActivityName = (activityName) => {
+        // save the activity name in local storage 
+        localStorage.setItem("currentActivity",activityName);
+        
+    }
+
     // Run after render of component
     useEffect(() => {
         checkActivity();
@@ -69,7 +77,7 @@ const Courses = (props) => {
         </div>
         <div className="row">
             {props.activities.map((item) => (
-            <div key={item._id} className="col s12 m6 l4">
+            <div  onClick={() => setActivityName(item.name)} key={item._id} className="col s12 m6 l4">
                 <div className="card" id={item.name}>
                         {/* Sending activity name to activity page to be able to fetch correct tasks from DB & sending tasks along too*/}
                     <Link to={{

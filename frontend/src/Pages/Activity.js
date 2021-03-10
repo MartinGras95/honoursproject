@@ -8,20 +8,18 @@ import ActivityCodeEditor from '../Components/ActivityCodeEditor';
 import ActivityQuestions from '../Components/ActivityQuestions';
 import FeedbackRequestForm from '../Components/FeedbackRequestForm'
 
-const Activity = (props) => {
-  
-  const taskInfo = props.location.activityProps;
-
+const Activity = () => {
   // Function to complete activity
   const completeActivity = async() => {
     console.log("activity completed!")
-    let user = taskInfo.user[0]._id;
-    let activityName = taskInfo.name;
+    let user = localStorage.getItem("_id");
+    let activityName = localStorage.getItem("currentActivity");
     
     // Post activity to users' finished activities
     try {
       await axios.post('http://localhost:4000/user/complete-activity', {id:user,activity:activityName})
       .then(() => {
+        // alert user of completing the activity
         window.alert("Well done! you completed this activity. Please move on to the next activities. Good luck!")
       })
       .catch((error) => {
@@ -35,17 +33,17 @@ const Activity = (props) => {
 
   return(
     <div className="container">
-      <ActivityCodeBlanks taskProps={taskInfo} />
+      <ActivityCodeBlanks  />
       <br />
 
       <div className="divider"></div>
 
-      <ActivityCodeEditor taskProps={taskInfo} />
+      <ActivityCodeEditor  />
       <br />
 
       <div className="divider"></div>
 
-      <ActivityQuestions taskProps={taskInfo} />
+      <ActivityQuestions  />
       <br />
 
       <div className="divider"></div>
@@ -59,7 +57,7 @@ const Activity = (props) => {
       <div className="divider"></div>
       <br />
 
-      <FeedbackRequestForm user={taskInfo.user[0]} activity={taskInfo.name} />
+      <FeedbackRequestForm />
 
     </div>
   )
