@@ -20,5 +20,8 @@ export const activitySchema = new Schema({
     description: {
         type: String,
         required: true
+    },
+    introduction: {
+        type: String
     }
 });

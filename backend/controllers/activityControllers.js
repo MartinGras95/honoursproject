@@ -28,3 +28,13 @@ export const getActivities = (req,res) => {
         res.json(Activity);
     });
 }
+
+// fetch specific activity description
+export const getActivity = (req,res) => {
+    Activity.findOne({name: req.params.currentActivity}, (err, Activity) => {
+        if(err){
+            res.send(err)
+        }
+        res.json(Activity)
+    })
+}

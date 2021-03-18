@@ -2,7 +2,7 @@
 
 // imports
 import { addNewUser, getUsers, getUser, sendMail, deleteMail, completeActivity,getMail } from '../controllers/userControllers';
-import { addNewActivity, getActivities } from '../controllers/activityControllers';
+import { addNewActivity, getActivities, getActivity } from '../controllers/activityControllers';
 import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
 import { addNewFeedbackRequest, getFeedbackRequests,deleteFeedbackRequest, getFeedbackRequestById } from '../controllers/feedbackRequestControllers'
 
@@ -33,6 +33,10 @@ const routes = (app) => {
         .get(getActivities)
     // POST endpoint
         .post(addNewActivity);
+
+    app.route('/activity/:currentActivity')
+    // GET
+        .get(getActivity)
 
     app.route('/user/complete-activity')
     .post(completeActivity)

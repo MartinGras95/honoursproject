@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import loginImage from '../images/login.jpg';
+import loginImage from '../images/login.webp';
 
 // Image sourced from "https://www.vecteezy.com/free-vector/web" 
 // by biggorilla298 

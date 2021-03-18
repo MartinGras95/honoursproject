@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import js from '../images/js.jpg';
+import js from '../images/js.webp';
 import {Link} from 'react-router-dom';
 
 

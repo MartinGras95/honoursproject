@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 
@@ -9,6 +9,25 @@ import ActivityQuestions from '../Components/ActivityQuestions';
 import FeedbackRequestForm from '../Components/FeedbackRequestForm'
 
 const Activity = () => {
+
+  // Get activity introduction
+  const getActivity = async() => {
+    let currentActivity = localStorage.getItem("currentActivity");
+    console.log(currentActivity)
+    try{
+      await axios.get(`http://localhost:4000/activity/${currentActivity}`)
+      .then((Response) => {
+        document.getElementById("activityIntro").innerText = Response.data.introduction;
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   // Function to complete activity
   const completeActivity = async() => {
     console.log("activity completed!")
@@ -31,8 +50,24 @@ const Activity = () => {
     }
   }
 
+    // Run after render of component
+    useEffect(() => {
+      getActivity();
+  },[]);
+
   return(
     <div className="container">
+      <h2>Activity Page</h2>
+      <br />
+
+      <div>
+        <h3>Introduction</h3>
+        <blockquote id="activityIntro"></blockquote>
+      </div>
+      <div className="divider"></div>
+      <br />
+
+
       <ActivityCodeBlanks  />
       <br />
 

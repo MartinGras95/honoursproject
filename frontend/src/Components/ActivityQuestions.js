@@ -51,7 +51,7 @@ function ActivityQuestions() {
         <>
             {foundTasks.map((item) => (
                 <div key={item._id}>
-                    <h4>Task 3</h4>
+                    <h3>Task 3</h3>
                     <blockquote>{item.question}</blockquote>
                     <div className="row" dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
                 </div>

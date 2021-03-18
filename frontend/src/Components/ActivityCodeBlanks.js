@@ -43,17 +43,37 @@ const ActivityCodeBlanks = () => {
     }
     
 
-    // Simple code addition code to show functionality of the activity
+    // Solve the code
     function solveCode(){
-        var x = 5;
-        // get value of y
+        // get y value
         var y = parseInt(document.getElementById("txtY").value);
+        
+        document.getElementById("yValue").innerText = `${y};`;
 
-        var xy = x+y;
+        // clear the output area
+        document.getElementById("codeBlanksOutput").innerText= " ";
 
-        document.getElementById("txtOutput").innerText = xy;
-        console.log(xy);
+        // Get code from user's input area
+        var userCode = document.getElementById("codeBlanksUserCode").innerText;
+
+        // Change console to log into the output box
+        // create a new text node for every console log
+        window.console = {
+            log: function(str){
+                var node = document.createElement("div");
+                node.appendChild(document.createTextNode(str));
+                document.getElementById("codeBlanksOutput").appendChild(node);
+            }
+        }
+        // Log the executed code 
+        try{
+            console.log(eval(userCode));
+        // Error handling
+        }catch(err){
+            console.log(err)
+        }
     }
+    
 
 
     // Run after render of component
@@ -69,7 +89,7 @@ const ActivityCodeBlanks = () => {
         <>
             {foundTasks.map((item) => (
                 <div key={item._id}>
-                    <h4>Task 1</h4>
+                    <h3>Task 1</h3>
                     <blockquote>{item.question}</blockquote>
                     <div className="row" dangerouslySetInnerHTML={{__html: item.sourceCode}}></div>
                     <div className="row">

@@ -30,6 +30,12 @@ main {
 .answerButtonStyles{
   min-width: 200px;
   margin: 5px;
+  min-height: 5rem;
+  font-size: 0.8rem;
+}
+
+.answerButtonText{
+  text-overflow: unset;
 }
 
 .invis{

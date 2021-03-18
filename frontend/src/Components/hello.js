@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-import helloImg from '../images/hello.jpg';
+import helloImg from '../images/hello.webp';
 
 // Image sourced from https://www.vecteezy.com/free-vector/programmer 
 // by Vectorbox Studio 
