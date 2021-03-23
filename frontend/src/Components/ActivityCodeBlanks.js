@@ -24,7 +24,7 @@ const ActivityCodeBlanks = () => {
 
                 // extract correct tasks
                 data.forEach(element => {
-                    if(element.type == 1 && element.activity == currentActivity){
+                    if(element.type === 1 && element.activity === currentActivity){
                         tempArray.push(element);
                     }else{
                     }
@@ -56,18 +56,21 @@ const ActivityCodeBlanks = () => {
         // Get code from user's input area
         var userCode = document.getElementById("codeBlanksUserCode").innerText;
 
-        // Change console to log into the output box
-        // create a new text node for every console log
-        window.console = {
-            log: function(str){
-                var node = document.createElement("div");
-                node.appendChild(document.createTextNode(str));
-                document.getElementById("codeBlanksOutput").appendChild(node);
-            }
-        }
+
         // Log the executed code 
         try{
-            console.log(eval(userCode));
+            // Change console to log into the output box
+            // create a new text node for every console log
+            window.console = {
+                log: function(str){
+                    var node = document.createElement("div");
+                    node.appendChild(document.createTextNode(str));
+                    document.getElementById("codeBlanksOutput").appendChild(node);
+                }
+            }
+            eval(userCode);
+            // then change console back to normal
+            
         // Error handling
         }catch(err){
             console.log(err)

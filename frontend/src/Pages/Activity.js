@@ -13,7 +13,6 @@ const Activity = () => {
   // Get activity introduction
   const getActivity = async() => {
     let currentActivity = localStorage.getItem("currentActivity");
-    console.log(currentActivity)
     try{
       await axios.get(`http://localhost:4000/activity/${currentActivity}`)
       .then((Response) => {
@@ -30,7 +29,6 @@ const Activity = () => {
 
   // Function to complete activity
   const completeActivity = async() => {
-    console.log("activity completed!")
     let user = localStorage.getItem("_id");
     let activityName = localStorage.getItem("currentActivity");
     

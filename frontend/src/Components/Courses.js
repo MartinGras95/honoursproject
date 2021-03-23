@@ -12,9 +12,11 @@ const Courses = (props) => {
 
     // After render check if logged user has completed each activity
     // if completed apply a green border to activity
-     const checkActivity = async() => {
+     function checkActivity(){
+         
         try{
-            // finished activities of user
+            if(localStorage.getItem("finishedActivities") !== ""){
+                            // finished activities of user
             const fActs = localStorage.getItem("finishedActivities").split(',');
 
             // activity elements on the page
@@ -27,6 +29,7 @@ const Courses = (props) => {
 
             // compare each task with completed tasks from user
             // if activity is finished then change style of that activity element
+
             for (let i = 0; i < fActs.length; i++) {
                 if(actNames.includes(fActs[i]) ){ 
                     
@@ -41,9 +44,13 @@ const Courses = (props) => {
                 }
                 
             }
+            }else{
+                console.log("no tasks finished")
+            }
+
 
         }catch(error){
-            console.log(error)
+            window.location.reload();
         }
         
 
@@ -59,7 +66,6 @@ const Courses = (props) => {
     // Run after render of component
     useEffect(() => {
         checkActivity();
-        
     },[]);
     
 

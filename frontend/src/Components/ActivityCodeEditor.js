@@ -23,7 +23,7 @@ function ActivityCodeEditor() {
 
                 // extract correct tasks
                 data.forEach(element => {
-                    if(element.type == 2 && element.activity == currentActivity){
+                    if(element.type === 2 && element.activity === currentActivity){
                         tempArray.push(element);
                     }else{
                     }
@@ -62,7 +62,7 @@ function ActivityCodeEditor() {
         // Log the executed code 
         // Error handling
         try{
-            console.log(eval(userCode));
+            eval(userCode);
         }catch(err){
             console.log(err)
         }
