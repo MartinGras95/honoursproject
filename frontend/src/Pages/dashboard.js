@@ -84,7 +84,6 @@ const Dashboard = (props) => {
                     sender: "Staff Member",
                     content: document.getElementById("feedbackResponse").value,
                     date: `${cDay}/${cMonth}/${cYear}`
-
                 }
             })
             .then(() => {

@@ -7,7 +7,6 @@ import Account from '../Pages/account'
 import Activity from '../Pages/Activity'
 import Dashboard from '../Pages/dashboard'
 
-// import './App.css';
 // Component imports
 import Layout from './Layout';
 import Courses from './Courses';

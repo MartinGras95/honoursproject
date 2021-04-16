@@ -37,7 +37,8 @@ const Activity = () => {
       await axios.post('http://localhost:4000/user/complete-activity', {id:user,activity:activityName})
       .then(() => {
         // alert user of completing the activity
-        window.alert("Well done! you completed this activity. Please move on to the next activities. Good luck!")
+        window.alert(`Well done! you completed this activity. Please move on to the next activities. Good luck!
+        NOTE: your activity completion status will be updated on relog.`)
       })
       .catch((error) => {
         console.log(error)
@@ -89,6 +90,7 @@ const Activity = () => {
       
       <div className="divider"></div>
       <br />
+
 
       <FeedbackRequestForm />
 

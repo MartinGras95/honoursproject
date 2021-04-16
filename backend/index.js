@@ -4,10 +4,7 @@ import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import routes from './routes/Routes';
 import cors from 'cors';
-// const session = require("express-session");
-// const passport = require("passport");
-// const passportLocal = require("passport-local");
-// const cookieParser = require("cookie-parser");
+
 
 
 // ============================= END OF IMPORTS ====================================
@@ -46,6 +43,37 @@ app.use(
     })
 )
 
+// ========================= END OF MIDDLEWARE ================================
+
+
+// Making routes available to the application
+routes(app);
+
+// Routes
+app.get('/', (req,res) => {
+    res.send(`Server is running on ${PORT}`)
+});
+
+// Listen for connection and return the application
+app.listen(PORT, () => {
+    console.log(`server is running on port ${PORT}`);
+})
+
+
+
+
+
+
+
+
+// ==========================Future Development ===========================
+
+// const session = require("express-session");
+// const passport = require("passport");
+// const passportLocal = require("passport-local");
+// const cookieParser = require("cookie-parser");
+
+// ============================== SESSIONS =================================
 // Session
 // app.use(
 //     session({
@@ -107,21 +135,3 @@ app.use(
 // app.get('/protected', validateCookie, (req,res) => {
 //     res.status(200).json({msg: 'You are authorised'});
 // })
-
-
-
-// ============================ END OF MIDDLEWARE ====================================
-
-
-// Making routes available to the application
-routes(app);
-
-// Routes
-app.get('/', (req,res) => {
-    res.send(`Server is running on ${PORT}`)
-});
-
-// Listen for connection and return the application
-app.listen(PORT, () => {
-    console.log(`server is running on port ${PORT}`);
-})

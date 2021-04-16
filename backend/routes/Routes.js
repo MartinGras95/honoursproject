@@ -1,11 +1,10 @@
-// This file contain all routes relevant to users
+// This file contain all routes
 
 // imports
 import { addNewUser, getUsers, getUser, sendMail, deleteMail, completeActivity,getMail } from '../controllers/userControllers';
 import { addNewActivity, getActivities, getActivity } from '../controllers/activityControllers';
 import { addNewTask,getTasks,getTaskWithActivity } from '../controllers/taskControllers';
 import { addNewFeedbackRequest, getFeedbackRequests,deleteFeedbackRequest, getFeedbackRequestById } from '../controllers/feedbackRequestControllers'
-
 
 
 // variable to hold all routes
@@ -67,11 +66,6 @@ const routes = (app) => {
     // Delete route
     app.route('/feedbackRequest/delete/:_id')
         .delete(deleteFeedbackRequest)
-        
-
-
-
-
 }
 
 

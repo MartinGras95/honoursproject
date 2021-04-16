@@ -14,6 +14,7 @@ const FeedbackRequestForm = ({user,activity}) => {
 
 
     const sendFeedbackRequest = async () =>{
+        // Variable to hold necessary data to be sent
         const data ={
             sender: `${loggedUser.firstName} ${loggedUser.lastName}`,
             senderID:`${loggedUser._id}`,
@@ -23,6 +24,7 @@ const FeedbackRequestForm = ({user,activity}) => {
             sourceCode: document.getElementById('txtCode').value
         }
         try{
+            // Send the data to the database
             await axios.post('http://localhost:4000/feedbackRequest',data)
             .then((Response) => {
                 console.log(Response.data)

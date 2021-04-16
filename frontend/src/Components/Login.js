@@ -24,7 +24,7 @@ const Login = ({changeUserToStudent,changeUserToStaff}) => {
                     <div>    
                         <h4><em>Code daily.</em></h4>
                     </div>
-                    <img src={loginImage} style={imgStyle} alt="login image" />
+                    <img src={loginImage} style={imgStyle} alt="login" />
                 </div>
             </div>
             <div className="col s12 l9 pull-l1">
