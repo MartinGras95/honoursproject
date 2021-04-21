@@ -24,7 +24,7 @@ const PORT = 4000;
 mongoose.Promise = global.Promise;
 
 // Connect to database
-mongoose.connect('mongodb+srv://martingras:titilayo@examplemerncluster.rnhwh.mongodb.net/codailyDB?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://metabase:atlaspassword@examplemerncluster.rnhwh.mongodb.net/codailyDB?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
